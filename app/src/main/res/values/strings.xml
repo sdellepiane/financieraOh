@@ -4,4 +4,10 @@
     <string name="s_user">Usuario</string>
     <string name="s_password">Password</string>
     <string name="s_login">Iniciar sesión</string>
+    <string name="s_register">Registro</string>
+    <string name="s_name">Nombre</string>
+    <string name="s_last_name">Apellido</string>
+    <string name="s_age">Edad</string>
+    <string name="s_birthday">Fecha de nacimiento</string>
+    <string name="s_register_button">Registrarse</string>
 </resources>
