@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="pe.financieraoh.projects.com.appfinancieraoh.presentation.viewmodel.LogInViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.LogInActivity">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tviUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/s_user"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/eteUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tviUser"
+            app:layout_constraintTop_toBottomOf="@+id/tviUser" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tviPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/s_password"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/eteUser"
+            app:layout_constraintTop_toBottomOf="@+id/eteUser" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etePassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tviPassword"
+            app:layout_constraintTop_toBottomOf="@+id/tviPassword"
+            android:inputType="textPassword"
+            android:layout_marginTop="6dp" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/butLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/s_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

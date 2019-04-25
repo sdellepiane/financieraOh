@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppFinancieraOh</string>
+    <string name="s_financiera_oh">Financiera Oh!</string>
+    <string name="s_user">Usuario</string>
+    <string name="s_password">Password</string>
+    <string name="s_login">Iniciar sesión</string>
+</resources>
