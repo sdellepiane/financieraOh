@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "910477415439",
-    "firebase_url": "https://financieraoh-b696f.firebaseio.com",
-    "project_id": "financieraoh-b696f",
-    "storage_bucket": "financieraoh-b696f.appspot.com"
+    "project_number": "506882053763",
+    "firebase_url": "https://financieraoh-d1182.firebaseio.com",
+    "project_id": "financieraoh-d1182",
+    "storage_bucket": "financieraoh-d1182.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:910477415439:android:14a94c4fdb6ab98e",
+        "mobilesdk_app_id": "1:506882053763:android:14a94c4fdb6ab98e",
         "android_client_info": {
           "package_name": "pe.financieraoh.projects.com.appfinancieraoh"
         }
       },
       "oauth_client": [
         {
-          "client_id": "910477415439-m2s5l0eudmlu83mrm3rajk73pqetd6vm.apps.googleusercontent.com",
+          "client_id": "506882053763-hi6iq03ltqiovem81v78of9ookeijoid.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAGT8Zb7qj4UsXkWWOCEwUPO5UaDyyUmZE"
+          "current_key": "AIzaSyDRo8xw-eeTFIBRtFoJ1Vf0vRZVZkRXw2g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "910477415439-m2s5l0eudmlu83mrm3rajk73pqetd6vm.apps.googleusercontent.com",
+              "client_id": "506882053763-hi6iq03ltqiovem81v78of9ookeijoid.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,12 +1,13 @@
 package pe.financieraoh.projects.com.appfinancieraoh.presentation.ui;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,9 +18,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 import pe.financieraoh.projects.com.appfinancieraoh.R;
 import pe.financieraoh.projects.com.appfinancieraoh.databinding.ActivityLogInBinding;
-import pe.financieraoh.projects.com.appfinancieraoh.presentation.viewmodel.LogInViewModel;
+import pe.financieraoh.projects.com.appfinancieraoh.presentation.viewmodel.login.LogInNavigator;
+import pe.financieraoh.projects.com.appfinancieraoh.presentation.viewmodel.login.LogInViewModel;
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity implements LogInNavigator {
 
     private FirebaseAuth mAuth;
     private LogInViewModel logInViewModel;
@@ -35,17 +37,67 @@ public class LogInActivity extends AppCompatActivity {
 
     private void init() {
         mAuth = FirebaseAuth.getInstance();
-        logInViewModel.user.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String user) {
-                logInViewModel.user.setValue(user);
+        logInViewModel.setNavigator(this);
+        setUserData();
+        setPasswordData();
+    }
+
+    private void setUserData() {
+        activityLogInBinding.eteUser.setOnEditorActionListener((view, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_NEXT && !activityLogInBinding.eteUser.getText().toString().isEmpty()) {
+                logInViewModel.setUserData(activityLogInBinding.eteUser.getText().toString());
             }
+            return false;
         });
 
-        logInViewModel.password.observe(this, new Observer<String>() {
+        activityLogInBinding.eteUser.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onChanged(@Nullable String password) {
-                logInViewModel.password.setValue(password);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //Nothing to do
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //Nothing to do
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().isEmpty()) {
+                    logInViewModel.setUserData(null);
+                } else {
+                    logInViewModel.setUserData(editable.toString());
+                }
+            }
+        });
+    }
+
+    private void setPasswordData() {
+        activityLogInBinding.etePassword.setOnEditorActionListener((view, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE && !activityLogInBinding.etePassword.getText().toString().isEmpty()) {
+                logInViewModel.setPasswordData(activityLogInBinding.etePassword.getText().toString());
+            }
+            return false;
+        });
+
+        activityLogInBinding.etePassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //Nothing to do
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //Nothing to do
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().isEmpty()) {
+                    logInViewModel.setPasswordData(null);
+                } else {
+                    logInViewModel.setPasswordData(editable.toString());
+                }
             }
         });
     }
@@ -54,13 +106,6 @@ public class LogInActivity extends AppCompatActivity {
         activityLogInBinding = DataBindingUtil.setContentView(this, R.layout.activity_log_in);
         logInViewModel = ViewModelProviders.of(this).get(LogInViewModel.class);
         activityLogInBinding.setLifecycleOwner(this);
-        activityLogInBinding.setViewModel(logInViewModel);
-    }
-
-    private void onClick() {
-        String user = activityLogInBinding.eteUser.getText().toString();
-        String password = activityLogInBinding.etePassword.getText().toString();
-        startSignIn(user, password);
     }
 
     private void startSignIn(final String user, final String password) {
@@ -90,5 +135,10 @@ public class LogInActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void logIn(String user, String password) {
+        startSignIn(user, password);
     }
 }
