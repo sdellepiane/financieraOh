@@ -1,12 +1,14 @@
 package pe.financieraoh.projects.com.appfinancieraoh.presentation.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
@@ -40,6 +42,8 @@ public class LogInActivity extends AppCompatActivity implements LogInNavigator {
         logInViewModel.setNavigator(this);
         setUserData();
         setPasswordData();
+        activityLogInBinding.butLogIn.setOnClickListener(view ->
+                startSignIn(activityLogInBinding.eteUser.getText().toString(), activityLogInBinding.etePassword.getText().toString()));
     }
 
     private void setUserData() {
@@ -110,35 +114,29 @@ public class LogInActivity extends AppCompatActivity implements LogInNavigator {
 
     private void startSignIn(final String user, final String password) {
         mAuth.signInWithEmailAndPassword(user, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                        } else {
-                            createUser(user, password);
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(LogInActivity.this, RegisterActivity.class));
+                    } else {
+                        createUser(user, password);
                     }
                 });
     }
 
     private void createUser(String user, String password) {
         mAuth.createUserWithEmailAndPassword(user, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                        } else {
-                            Toast.makeText(LogInActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(LogInActivity.this, RegisterActivity.class));
+                    } else {
+                        Toast.makeText(LogInActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     @Override
-    public void logIn(String user, String password) {
-        startSignIn(user, password);
+    public void enableButton(boolean enable) {
+        activityLogInBinding.butLogIn.setEnabled(enable);
     }
 }

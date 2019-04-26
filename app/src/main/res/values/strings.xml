@@ -10,4 +10,6 @@
     <string name="s_age">Edad</string>
     <string name="s_birthday">Fecha de nacimiento</string>
     <string name="s_register_button">Registrarse</string>
+    <string name="s_birthday_selected">%s / %s / %s</string>
+    <string name="s_number_formatted_date">%s%s</string>
 </resources>
