@@ -123,6 +123,23 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:cursorVisible="false"
+            android:clickable="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tviBirthday"
+            app:layout_constraintTop_toBottomOf="@+id/tviAge" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tviBirthdayLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="bottom"
+            android:textSize="18sp"
+            android:cursorVisible="false"
+            app:layout_constraintBottom_toBottomOf="@+id/eteBirthday"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tviBirthday"
             app:layout_constraintTop_toBottomOf="@+id/tviAge" />
@@ -134,8 +151,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
-            android:enabled="@{viewModel.enabledRegisterButton}"
-            android:onClick="@{() -> viewModel.onClick()}"
+            android:enabled="false"
             android:text="@string/s_register_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

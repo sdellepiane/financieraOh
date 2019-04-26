@@ -41,10 +41,7 @@ public class RegisterViewModel extends BaseViewModel<RegisterNavigator> {
         boolean enabled = name != null && !name.isEmpty() && lastName != null
                 && !lastName.isEmpty() && age != 0 && birthday != null && !birthday.isEmpty();
         this.enabledRegisterButton.setValue(enabled);
-    }
-
-    public void onClick(){
-        getNavigator().register(name, lastName, age, birthday);
+        getNavigator().enableButton(enabled);
     }
 
     @Override

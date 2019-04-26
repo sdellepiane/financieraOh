@@ -28,10 +28,7 @@ public class LogInViewModel extends BaseViewModel<LogInNavigator> {
     private void updateEnabled() {
         boolean enabled = user != null && !user.isEmpty() && password != null && !password.isEmpty();
         this.enabledLogInButton.setValue(enabled);
-    }
-
-    public void onClick(){
-        getNavigator().logIn(user, password);
+        getNavigator().enableButton(enabled);
     }
 
     @Override

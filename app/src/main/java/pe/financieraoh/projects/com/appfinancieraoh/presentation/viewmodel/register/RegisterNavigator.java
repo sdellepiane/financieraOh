@@ -2,5 +2,5 @@ package pe.financieraoh.projects.com.appfinancieraoh.presentation.viewmodel.regi
 
 public interface RegisterNavigator {
 
-    void register(String name, String lastname, int age, String birthday);
+    void enableButton(boolean enable);
 }
